@@ -13,5 +13,7 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"message": "pong"})
 	})
 
+	router.GET("/validate", validateHandler)
+
 	router.Run()
 }
