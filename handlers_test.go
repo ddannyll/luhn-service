@@ -52,3 +52,12 @@ func TestInvalidNumber(t *testing.T) {
 	}) 
 }
 
+func TestInvalidRequest(t *testing.T) {
+	r := gin.Default()
+	r.GET("/validate", validateHandler)
+	
+	req, _ := http.NewRequest("GET", "/validate", nil)
+	testHTTPResponse(t, r, req, func(w *httptest.ResponseRecorder) bool {
+		return w.Code != http.StatusOK 
+	}) 
+}
